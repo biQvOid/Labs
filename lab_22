@@ -1,0 +1,94 @@
+\documentclass[a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\setcounter{page}{522}
+\usepackage{textcomp}
+
+\begin{document}
+\large
+\begin{flushleft}
+\textbf{21.4. Интегралы от дифференциальных биномов}\\[4mm]
+\end{flushleft}
+Выражение $x^m(a + bx^n)^p dx (a\neq 0, b\neq 0)$ называется \textit{дифференциальным биномом}. Будем рассматривать случаи, когда n, m и p --- рациональные, а a и b --- действительные числа.
+
+Положим\begin{equation}x=t^{1/n}\tag{21.12},
+\end{equation}
+Тогда $dx = \frac{1}{n}t^{1/n-1} dt$ и, следовательно,
+
+\begin{displaymath}
+\int x^m(a + bx^n)^p dx = \frac{1}{n}\int(a+bt)^p t^{\frac{m+1}{n}} dt.
+\end{displaymath}
+Таким образом, интеграл
+\begin{equation}\tag{21.13}
+\int x^m(a + bx^n)^p dx
+\end{equation}
+сводится подстановкой (21.12) к интегралу типа
+
+\begin{equation}
+\int (a+bt)^pt^q dt,\tag{21.14}
+\end{equation}
+\begin{flushleft}
+где p и q рациональны. В рассматриваемом случае
+\end{flushleft}
+\[q = \frac{m+1}{n}-1. \]
+
+П \hspace{0.005mm}е \hspace{0.005mm}р \hspace{0.005mm}в \hspace{0.005mm}ы \hspace{0.005mm}й\hspace{3pt} с \hspace{0.005mm}л \hspace{0.005mm}у \hspace{0.005mm}ч \hspace{0.005mm}а \hspace{0.005mm}й: p\hspace{0.2mm} --- \hspace{0.2mm}целое число. Пусть $q\hspace{1mm}=\hspace{1mm}r/s,$ где r и s\hspace{1mm} --- \hspace{1mm} целые числа. Согласно результатам п. 21.2, в этом случае подстановка $z=t^{1/s}$ сводит интеграл (21.14) к
+интегралу от рациональной дроби.
+
+В \hspace{0.005mm}т \hspace{0.005mm}о \hspace{0.005mm}р \hspace{0.005mm}о \hspace{0.005mm}й\hspace{3pt} с \hspace{0.005mm}л \hspace{0.005mm}у \hspace{0.005mm}ч \hspace{0.005mm}а \hspace{0.005mm}й: q\hspace{0.2mm} --- \hspace{0.2mm}целое число. Пусть теперь $p=r/s,$ r и s\hspace{1mm}--- \hspace{1mm}целые числа. Согласно результатам п. 21.2, интеграл (21.14) приводится в этом случае подстановкой $z=(a+bt)^{1/s}$ к интегралу от рациональной дроби.
+
+Т \hspace{0.005mm}р \hspace{0.005mm}е \hspace{0.005mm}т \hspace{0.005mm}и \hspace{0.005mm}й\hspace{3pt} с \hspace{0.005mm}л \hspace{0.005mm}у \hspace{0.005mm}ч \hspace{0.005mm}а \hspace{0.005mm}й: $p\hspace{1mm}+\hspace{1mm}q$\hspace{1mm} --- \hspace{1mm}целое. Пусть
+$p\hspace{1mm}=\hspace{1mm}r/s$, где s\hspace{1mm}-целое. Запишем для наглядности интеграл (21.14) в виде
+\[\int (a + bt^n)^pt^q dt = \int\left(\frac{a+bt}{t}\right)^pt^{p\hspace{1mm} + \hspace{1mm}q}\hspace{1mm} dt. \]
+
+Снова имеем интеграл типа, рассмотренного в том же п. 21.2. На этот раз к интегралу от рациональной дроби его
+приводит подстановка $z=\left(\frac{a+bt}{t}\right)^{1/s}$.
+
+Итак, в трех случаях, когда одно из чисел p, q или $p\hspace{1mm} + \hspace{1mm}q$ является целым, интеграл (21.14) при помощи указанных выше подстановок приводиться к интегралу от рациональной дроби.
+
+Применительно к интегралу (21.13) этот результат выглядит следующим образом: когда одно из чисел p,
+$\frac{m \hspace{1mm} + \hspace{1mm} 1}{n}$ или $\frac{m \hspace{1mm} + \hspace{1mm} 1}{n} \hspace{1mm} + \hspace{1mm} p$ является целым, интеграл (21.13) может быть сведён к интегралу от рациональной дроби. При этом в том случае, когда p целое, это сведение осуществляет подстановка $z \hspace{1mm} = \hspace{1mm}x^{n/s}$, где число s является знаменателем дроби $\frac{m \hspace{1mm} + \hspace{1mm} 1}{n}$, т.е.
+$\frac{m \hspace{1mm} + \hspace{1mm} 1}{n}=\frac{r}{s}$;
+в том случае, когда $\frac{m \hspace{1mm} + \hspace{1mm} 1}{n}$ \hspace{0.1mm} --- \hspace{0.1mm} целое, подстановка
+
+\[(z=a+bx^n)^{1/s}, \]
+
+где число s является знаменателем дроби p, т.е. $p=\frac{r}{s}$, а в
+
+том случае, когда $\frac{m \hspace{1mm} + \hspace{1mm} 1}{n}+p$\hspace{0.1mm} ---  \hspace{0.1mm}целое,\hspace{1mm} --- \hspace{1mm}подстановка
+\[z=(ax^{-n}+b)^{1/s}, \]
+где число s также является знаменателем дроби p.
+
+Этот факт был известен ещё И. Ньютону. Л. Эйлер высказал предположение,
+что ни для каких других показателей m, интеграл от дифференциального бинома нельзя свести к интегралу от рациональных функций. Для рациональных показателей m, n и p, не удовлетворяющих указанным
+выше условиям, это было доказано П. Л. Чебышёвым, а для иррациональных\hspace{1mm} --- \hspace{1mm}Д. Д. Мордухай-Болотовским.\footnote{\normalsizeД. Д. мордухай-Болотовский (1876-1952) - русский математик.}
+
+\textbf{Пример.} Рассмотрим интеграл
+\begin{center}
+$I=\int\sqrt{x}\sqrt[4]{1-1/\sqrt{x^3}}dx=\int x^{1/2}(1-x^{-3/2})^{1/4}dx.$
+\end{center}
+
+Здесь $m=1/2$, $n=-3/2$, $p=1/4$ и $(m+1)/n=-1$; имеем второй случай.
+
+Сделаем указанную выше подстановку:
+\begin{equation}
+z=(1-x^{-3/2})^{1/4};\tag{21.15}
+\end{equation}
+\newpage
+
+отсюда $x=(1-z^4)^{-2/3},\hspace{2mm} dx=\frac{8}{3}(1-z^4)^{-5/3}\hspace{1mm} z^3\hspace{2mm} dz,$ поэтому
+
+\begin{displaymath}
+I=\frac{8}{3}\int\frac{z^4}{(1-z^4)^2}dz=\frac{2}{3}\int z\hspace{1mm} d\frac{1}{1-z^4} = \frac{2}{3}\left(\frac{z}{1-z^4}-\int\frac{dz}{1-z^4}\right)=
+\end{displaymath}
+\begin{displaymath}
+=\frac{2z}{3(1-z^4)}-\frac{1}{3}\int\left(\frac{1}{1-z^2}+\frac{1}{1+z^2}\right)dz=
+\end{displaymath}
+\begin{displaymath}
+\frac{2z}{3(1-z^4)}-\frac{1}{6}\hspace{1pt} ln\hspace{1pt} \left|\frac{1+z}{1-z}\right|-\frac{1}{3}\arctg{z} + C,
+\end{displaymath}
+
+где z выражается через x по формуле (21.15).
+\end{document}
