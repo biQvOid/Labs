@@ -115,6 +115,18 @@ void to_delete_node(Tree* tree, int value)
     }
 }
 
+void tree_destroy(Tree* root)
+{
+    if (root->son) {
+        tree_destroy(root->son);
+    }
+    if (root->brother) {
+        tree_destroy(root->brother);
+    }
+    free(root);
+    root = NULL;
+}
+
 void delete_node(Tree* tree, int value) 
 {
     Tree* finder = find_node(tree, value);
@@ -180,7 +192,11 @@ void print_the_tree(Tree* root, int count)
 
 void tree_print(Tree* root)
 {
-    print_the_tree(root, 0);
+    if (root != NULL) {
+        print_the_tree(root, 0);
+    } else {
+        printf("The tree not exists\n");
+    }
 }
 
 int main()
@@ -191,6 +207,7 @@ int main()
     printf("d - удалить узел из дерева(необходимо ввести значение узла)\n");
     printf("p - графическое представление дерева\n");
     printf("f - вывести значение максимального по глубине нетерминального узла\n");
+    printf("b - удалить дерево\n");
     char c;
     int value;
     int k = 0;
@@ -203,30 +220,49 @@ int main()
             v = create_tree(value);
         } else if (c == 'c' && k != 0) {
             printf("The tree already exists\n");
-        } else if (c == 'a') {
-            while(scanf("%d%d", &first, &second)) {
-                Tree* first_finder = find_node(v, first);
-                Tree* second_finder = find_node(v, second);
-                if (first_finder != NULL && second_finder == NULL) {
-                    add_node(v, first, second);
-                } else if (first_finder == NULL) {
-                    printf("Such node not exists\n");
-                } else if (second_finder != NULL) {
-                    printf("Such node already exists\n");
-                }
+        } else if (c == 'a' && k != 0) {
+            scanf("%d%d", &first, &second);
+            Tree* first_finder = find_node(v, first);
+            Tree* second_finder = find_node(v, second);
+            if (first_finder != NULL && second_finder == NULL) {
+                add_node(v, first, second);
+            } else if (first_finder == NULL) {
+                printf("Such node not exists\n");
+            } else if (second_finder != NULL) {
+                printf("Such node already exists\n");
             }
-        } else if (c == 'd') {
+        } else if (c == 'a' && k == 0) {
+            printf("The tree not exists\n");
+        } else if (c == 'd' && k != 0) {
             scanf("%d", &value);
             Tree* finder = find_node(v, value);
             if (finder != NULL) {
-                delete_node(v, value);
+                if (finder->brother == NULL) {
+                    tree_destroy(v);
+                    v = NULL;
+                    k--;
+                } else {
+                    delete_node(v, value);
+                }
             } else {
                 printf("Such node not exists\n");
             }
-        } else if (c == 'p') {
+        } else if (c == 'd' && k == 0) {
+            printf("The tree not exists\n");
+        } else if (c == 'p' && k != 0) {
             tree_print(v);
-        } else if (c == 'f') {
+        } else if (c == 'p' && k == 0) {
+            printf("The tree not exists\n");
+        } else if (c == 'f' && k != 0) {
             max_deep_nonterminal_node(v);
+        } else if (c == 'f' && k == 0) {
+            printf("The tree not exists\n");
+        } else if (c == 'b' && k != 0) {
+            tree_destroy(v);
+            v = NULL;
+            k--;
+        } else if (c == 'b' && k == 0) {
+            printf("The tree not exists\n");
         }
     }
     return 0;
