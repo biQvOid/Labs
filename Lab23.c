@@ -237,7 +237,7 @@ int main()
             scanf("%d", &value);
             Tree* finder = find_node(v, value);
             if (finder != NULL) {
-                if (finder->brother == NULL) {
+                if (finder->parent == NULL) {
                     tree_destroy(v);
                     v = NULL;
                     k--;
