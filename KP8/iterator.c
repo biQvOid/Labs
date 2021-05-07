@@ -10,17 +10,19 @@ iterator* iterator_create(list* lst)
     return it;
 }
 
-void iterator_next(iterator* it)
+iterator* iterator_next(iterator* it)
 {
     if (it != NULL) {
         it->nod = it->nod->next;
+        return it;
     }
 }
 
-void iterator_prev(iterator* it)
+iterator* iterator_prev(iterator* it)
 {
     if (it != NULL) {
         it->nod = it->nod->prev;
+        return it;
     }
 }
 
