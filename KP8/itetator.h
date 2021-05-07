@@ -12,8 +12,8 @@ struct _iterator
 };
 
 iterator* iterator_create(list* lst);
-void iterator_next(iterator* it);
-void iterator_prev(iterator* it);
+iterator* iterator_next(iterator* it);
+iterator* iterator_prev(iterator* it);
 node* iterator_get(iterator* it);
 void iterator_destroy(iterator* it);
 
