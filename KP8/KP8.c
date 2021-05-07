@@ -60,9 +60,11 @@ int main()
             printf("%d\n", count(l));
         } else if (!strcmp(s, "count") && h == 0) {
             printf("The list not exists\n");
-        } else if (!strcmp(s, "destroy")) {
+        } else if (!strcmp(s, "destroy") && h != 0) {
             destroy(l);
             h--;
+        } else if (!strcmp(s, "destroy") && h == 0) {
+            printf("The list not exists\n");
         }
         scanf("%s%c", s, &c);
     }
