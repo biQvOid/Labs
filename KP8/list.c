@@ -1,4 +1,5 @@
 #include "list.h"
+#include "itetator.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -32,16 +33,17 @@ void back_insert(list* lst, char c)
 
 void print(list* lst)
 {
-    if (lst == NULL) {
+    if (lst == NULL || lst->head == NULL) {
         return;
     }
-    node* first = lst->head->next;
-    if (lst->head != NULL) {
-        printf("[%c] ", lst->head->data);
+    iterator* iter = iterator_create(lst);
+    if (iterator_get(iter) != NULL) {
+        printf("[%c] ", iterator_get(iter)->data);
     }
-    while (first != lst->head) {
-        printf("[%c] ", first->data);
-        first = first->next;
+    iter = iterator_next(iter);
+    while (iterator_get(iter) != lst->head) {
+        printf("[%c] ", iterator_get(iter)->data);
+        iter = iterator_next(iter);
     }
     printf("\n");
 }
@@ -74,10 +76,15 @@ void delete(list* lst, int k)
         printf("The list not exists\n");
         return;
     }
-    node* first = lst->head;
-    for (int i = 0; i < k; i++) {
-        first = first->next;
+    if (count(lst) == 1) {
+        lst->tail = lst->head = NULL;
+        return;
     }
+    iterator* iter = iterator_create(lst);
+    for (int i = 0; i < k; i++) {
+        iter = iterator_next(iter);
+    }
+    node* first = iterator_get(iter);
     if (first != lst->head && first != lst->tail) {
         first->prev->next = first->next;
         first->next->prev = first->prev;
@@ -100,11 +107,13 @@ void function(list* lst, int k)
     if (lst == NULL) {
         return;
     }
-    if (lst->tail == NULL) {
+    iterator* iter = iterator_create(lst);
+    iter = iterator_prev(iter);
+    if (iterator_get(iter) == NULL) {
         return;
     }
     for (int i = 0; i < k; i++) {
-        front_insert(lst, lst->tail->data);
+        front_insert(lst, iterator_get(iter)->data);
     }
 }
 
@@ -114,13 +123,14 @@ int count(list* lst)
         return 0;
     }
     int k = 0;
-    node* first = lst->head->next;
+    iterator* iter = iterator_create(lst);
+    iter = iterator_next(iter);
     if (lst->head != NULL) {
         k++;
     }
-    while (first != lst->head) {
+    while (iterator_get(iter) != lst->head) {
         k++;
-        first = first->next;
+        iter = iterator_next(iter);
     }
     return k;
 }
