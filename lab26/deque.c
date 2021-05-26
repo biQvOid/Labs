@@ -1,41 +1,40 @@
 #include "deque.h"
 #include <stdlib.h>
 
-void deque_create(deque* a)
+void deque_create(deque *a)
 {
-    a->data = malloc(sizeof(int));
+    a->elements = malloc(sizeof(int));
     a->capasity = 1;
     a->number_of_elements = 0;
 }
 
-void push_front(deque* a, int b)
+void push_front(deque *a, int b)
 { 
-    if (*(a->data) == a->capasity) {
+    if(a->number_of_elements == a->capasity) {
         resize(a);
     }
     int tmp1, tmp2;
     tmp1 = b;
-    for (int i = 0; i < a->number_of_elements + 1; i++) {
-        tmp2 = a->data[i];
-        a->data[i] = tmp1;
+    for(int i = 0; i < a->number_of_elements + 1; i++) {
+        tmp2 = a->elements[i];
+        a->elements[i] = tmp1;
         tmp1 = tmp2;
     }
     a->number_of_elements++;
 }
 
-void push_back(deque* a, int b)
+void push_back(deque *a, int b)
 { 
-    if (a->number_of_elements == size(a)) {
+    if (a->number_of_elements == deque_size(a)) {
         resize(a);
     }
-    a->data[a->number_of_elements] = b;
+    a->elements[a->number_of_elements] = b;
     a->number_of_elements++;
 }
 
 void pop_back(deque *a)
 {
     if (a->number_of_elements > 0) {
-        a->data[a->number_of_elements] = 0;
         a->number_of_elements--;
     }
 }
@@ -43,42 +42,46 @@ void pop_back(deque *a)
 void pop_front(deque *a)
 {
     if (a->number_of_elements > 0) {
-        for (int i = 0; i < a->number_of_elements - 1; i++) {
-            a->data[i] = a->data[i + 1];
+        for(int i = 0; i < a->number_of_elements - 1; i++) {
+            a->elements[i] = a->elements[i + 1];
         }
-        a->data[a->number_of_elements - 1]= 0;
         a->number_of_elements--;
     }
 }
 
 int first_front(deque* a)
 {
-    return a->data[0];
+    return a->elements[0];
 }
 
 int first_back(deque* a)
 {
-    return a->data[a->number_of_elements - 1];
+    return a->elements[a->number_of_elements - 1];
 }
 
-int empty(deque* a)
+int empty(deque *a)
 {
-    if (!a->number_of_elements) {
+    if (a->number_of_elements == 0) {
         return 1;
     } else {
         return 0;
     }
 }
 
-void resize(deque* a)
+void resize(deque *a)
 {
     a->capasity++;
-    a->data = realloc(a->data, a->capasity * sizeof(int));
+    a->elements = realloc(a->elements, a->capasity * sizeof(int));
 }
 
 int size(deque* a)
 {
     return a->number_of_elements;
+}
+
+int deque_size(deque *a)
+{
+    return a->capasity;
 }
 
 deque* reverse(deque* a)
