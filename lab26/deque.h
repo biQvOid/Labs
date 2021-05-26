@@ -7,7 +7,7 @@ typedef struct _deque deque;
 
 struct _deque
 {
-    int* data;
+    int *elements;
     int capasity;
     int number_of_elements;
 };
@@ -20,12 +20,11 @@ int first_back(deque* a);
 int empty(deque* a);
 void pop_front(deque* a);
 void pop_back(deque* a);
-int empty(deque* a);
 void resize(deque* a);
 int size(deque* a);
+int deque_size(deque* a);
 
 deque* reverse(deque* a);
 void merge(deque* res, deque* a, deque* b);
 void merge_sort(deque* a);
-
 #endif
